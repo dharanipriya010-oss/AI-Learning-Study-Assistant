@@ -1,0 +1,16 @@
+Algorithms are step-by-step procedures used to solve computational problems.
+
+An algorithm should have the following characteristics:
+1. Input
+2. Output
+3. Definiteness
+4. Finiteness
+5. Effectiveness
+
+Time complexity measures how the running time of an algorithm increases
+as the input size increases.
+
+Big O notation describes the upper bound of an algorithm's growth rate.
+
+Common time complexities include:
+O(1), O(log n), O(n), O(n log n), O(n²).

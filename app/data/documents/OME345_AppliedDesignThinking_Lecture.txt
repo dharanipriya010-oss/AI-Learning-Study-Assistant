@@ -1,0 +1,17 @@
+# OME345 Applied Design Thinking - Lecture Notes
+
+## 1. Introduction to Design Thinking
+Design Thinking is a human-centered, iterative problem-solving methodology used to understand users, challenge assumptions, redefine problems, and create innovative solutions.
+
+## 2. Five Stages of Design Thinking
+1. Empathize: Understand user needs, motivations, and pain points through interviews, observation, and immersion.
+2. Define: Formulate a clear problem statement (Point of View - POV) based on user insights gathered during empathy research.
+3. Ideate: Generate a wide range of creative ideas using techniques like brainstorming, mind mapping, and Worst Possible Idea.
+4. Prototype: Build low-fidelity, inexpensive physical or digital representations of concepts (paper wireframes, cardboard models).
+5. Test: Gather user feedback on prototypes to refine understanding of user needs and iterate on solutions.
+
+## 3. Key Mindsets in Design Thinking
+- User-Centricity: Always keep the human end-user at the core of decision-making.
+- Bias Toward Action: Focus on building and testing over endless discussion.
+- Radical Collaboration: Leverage diverse team backgrounds for multifaceted perspectives.
+- Embracing Failure: View prototypes that fail as cheap learning opportunities.

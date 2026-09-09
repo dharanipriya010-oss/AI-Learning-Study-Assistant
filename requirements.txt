@@ -1,0 +1,6 @@
+# Optional dependencies for enhanced features
+google-genai>=0.1.1
+pypdf>=3.0.0
+python-docx>=0.8.11
+fastapi>=0.100.0
+uvicorn>=0.20.0

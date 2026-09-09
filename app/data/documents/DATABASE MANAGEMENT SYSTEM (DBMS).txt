@@ -1,0 +1,57 @@
+DATABASE MANAGEMENT SYSTEM (DBMS) - QUICK NOTES
+
+1. INTRODUCTION
+   - DBMS: Software for creating, managing, and manipulating databases.
+   - Examples: MySQL, Oracle, PostgreSQL, SQL Server.
+   - Advantages over File System: Reduced redundancy, better security, concurrency control.
+
+2. DBMS ARCHITECTURE
+   - 1-Tier: Direct access to DB.
+   - 2-Tier: Client ↔ Server.
+   - 3-Tier: Client ↔ Application Server ↔ Database Server.
+
+3. DATA MODELS
+   - Hierarchical Model
+   - Network Model
+   - Relational Model (most common)
+   - Entity-Relationship Model
+
+4. KEYS
+   - Primary Key: Unique identifier for records.
+   - Foreign Key: Links two tables.
+   - Candidate Key: Possible primary keys.
+   - Composite Key: Combination of attributes.
+
+5. NORMALIZATION
+   - 1NF: Remove repeating groups.
+   - 2NF: Remove partial dependency.
+   - 3NF: Remove transitive dependency.
+   - BCNF: Stronger form of 3NF.
+
+6. SQL BASICS
+   - DDL: CREATE, ALTER, DROP.
+   - DML: SELECT, INSERT, UPDATE, DELETE.
+   - DCL: GRANT, REVOKE.
+   - TCL: COMMIT, ROLLBACK, SAVEPOINT.
+
+7. TRANSACTIONS
+   - ACID Properties:
+     A - Atomicity
+     C - Consistency
+     I - Isolation
+     D - Durability
+
+8. CONCURRENCY CONTROL
+   - Locking: Shared, Exclusive.
+   - Deadlock: Prevention, Detection, Recovery.
+
+9. INDEXING
+   - Improves query performance.
+   - Types: Primary, Secondary, Clustered, Non-clustered.
+
+10. BACKUP & RECOVERY
+    - Full Backup
+    - Incremental Backup
+    - Point-in-time Recovery
+
+END OF NOTES

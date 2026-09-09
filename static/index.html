@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Learning & Study Assistant</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- KaTeX Math CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans">
+
+  <!-- Header Banner -->
+  <header class="bg-slate-900/90 border-b border-slate-800 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center shadow-lg shadow-indigo-500/20">
+          <i data-lucide="graduation-cap" class="w-6 h-6 text-white"></i>
+        </div>
+        <div>
+          <h1 class="text-xl font-bold bg-gradient-to-r from-white via-slate-200 to-indigo-300 bg-clip-text text-transparent">
+            AI Learning & Study Assistant
+          </h1>
+          <p class="text-xs text-slate-400">RAG • Memory • Adaptive Plans • Quiz Studio • Tools</p>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-3">
+        <!-- Settings Modal Trigger -->
+        <button id="btn-settings" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium border border-slate-700 flex items-center space-x-2 transition">
+          <i data-lucide="key" class="w-4 h-4 text-indigo-400"></i>
+          <span>Gemini API Key</span>
+        </button>
+        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span>
+          System Ready
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <div class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+    <!-- Navigation Sidebar -->
+    <aside class="lg:col-span-3 space-y-2">
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-3 space-y-1">
+        <nav class="space-y-1" id="tab-nav">
+          <button data-tab="tab-materials" class="nav-btn active w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium transition text-indigo-400 bg-indigo-500/10 border border-indigo-500/20">
+            <i data-lucide="book-open" class="w-4 h-4"></i>
+            <span>Course Materials (RAG)</span>
+          </button>
+
+          <button data-tab="tab-chat" class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 transition">
+            <i data-lucide="message-square" class="w-4 h-4"></i>
+            <span>AI Tutor Chat</span>
+          </button>
+
+          <button data-tab="tab-plan" class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 transition">
+            <i data-lucide="calendar" class="w-4 h-4"></i>
+            <span>Learning Plan Studio</span>
+          </button>
+
+          <button data-tab="tab-quiz" class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 transition">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            <span>Quiz & Flashcard Studio</span>
+          </button>
+
+          <button data-tab="tab-memory" class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 transition">
+            <i data-lucide="brain" class="w-4 h-4"></i>
+            <span>Memory & Analytics</span>
+          </button>
+
+          <button data-tab="tab-tools" class="nav-btn w-full flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 transition">
+            <i data-lucide="wrench" class="w-4 h-4"></i>
+            <span>Tools & Search Hub</span>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Quick Memory Widget -->
+      <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-4 space-y-3">
+        <div class="flex items-center justify-between text-xs text-slate-400">
+          <span class="font-semibold uppercase tracking-wider text-indigo-400 flex items-center space-x-1">
+            <i data-lucide="activity" class="w-3.5 h-3.5"></i>
+            <span>Study Progress</span>
+          </span>
+          <span id="widget-mastery-score">0%</span>
+        </div>
+        <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+          <div id="widget-mastery-bar" class="bg-gradient-to-r from-indigo-500 to-purple-500 h-full w-0 transition-all duration-500"></div>
+        </div>
+        <div class="text-xs text-slate-400 flex justify-between pt-1">
+          <span>Weak Spots: <strong id="widget-weak-count" class="text-amber-400">0</strong></span>
+          <span>Quizzes: <strong id="widget-quiz-count" class="text-indigo-400">0</strong></span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Dynamic Tab View Area -->
+    <main class="lg:col-span-9 bg-slate-900/60 border border-slate-800 rounded-2xl p-6 relative overflow-hidden flex flex-col">
+
+      <!-- TAB 1: Course Materials & RAG Hub -->
+      <section id="tab-materials" class="tab-content space-y-6">
+        <div>
+          <h2 class="text-2xl font-bold text-white flex items-center space-x-2">
+            <i data-lucide="book-open" class="text-indigo-400"></i>
+            <span>Course Materials & RAG Ingestion</span>
+          </h2>
+          <p class="text-sm text-slate-400">Upload your notes, PDFs, or lecture files to build an instant searchable vector index for Q&A and quiz generation.</p>
+        </div>
+
+        <!-- Upload Document Box -->
+        <div class="bg-slate-950/80 border border-dashed border-slate-700 rounded-xl p-6 text-center space-y-3 hover:border-indigo-500/50 transition">
+          <i data-lucide="upload-cloud" class="w-10 h-10 text-indigo-400 mx-auto"></i>
+          <div>
+            <h3 class="text-sm font-semibold text-slate-200">Upload Course Material / Lecture Notes</h3>
+            <p class="text-xs text-slate-400">Paste text content below or select a file (.txt, .md, .py, .json)</p>
+          </div>
+          <div class="max-w-xl mx-auto space-y-3">
+            <div class="flex items-center space-x-2">
+              <input type="text" id="doc-filename" placeholder="Document Title (e.g. OME345_AppliedDesignThinking_Lecture.txt)" class="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-200 focus:border-indigo-500 focus:outline-none">
+              <input type="file" id="file-picker" accept=".txt,.md,.py,.json,.csv,.js,.html,.css" class="hidden">
+              <button type="button" id="btn-browse-file" class="bg-slate-800 hover:bg-slate-700 text-indigo-300 border border-slate-700 font-medium text-xs px-3 py-2 rounded-lg transition flex items-center space-x-1.5 flex-shrink-0">
+                <i data-lucide="file-up" class="w-3.5 h-3.5 text-indigo-400"></i>
+                <span>Browse File</span>
+              </button>
+            </div>
+            <textarea id="doc-content" rows="4" placeholder="Paste full lecture text, document content, or notes here..." class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-xs text-slate-200 focus:border-indigo-500 focus:outline-none font-mono"></textarea>
+            <button id="btn-upload-doc" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-xs py-2.5 rounded-lg transition flex items-center justify-center space-x-2">
+              <i data-lucide="plus-circle" class="w-4 h-4"></i>
+              <span>Ingest Document into RAG Vector Store</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Document List & Chunk Stats -->
+        <div class="space-y-3">
+          <h3 class="text-sm font-semibold text-slate-200 flex items-center justify-between">
+            <span>Indexed Documents</span>
+            <span id="doc-count-badge" class="text-xs bg-slate-800 text-slate-400 px-2 py-0.5 rounded-full">0 Documents</span>
+          </h3>
+          <div id="docs-list" class="space-y-2 max-h-60 overflow-y-auto pr-1">
+            <p class="text-xs text-slate-500 italic">No documents uploaded yet. Sample materials pre-loaded or add your own above.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: AI Tutor Chat (RAG Q&A with Citations) -->
+      <section id="tab-chat" class="tab-content hidden space-y-4 flex-1 flex flex-col">
+        <div>
+          <h2 class="text-2xl font-bold text-white flex items-center space-x-2">
+            <i data-lucide="message-square" class="text-indigo-400"></i>
+            <span>AI Tutor Chat</span>
+          </h2>
+          <p class="text-sm text-slate-400">Ask questions about your uploaded materials. Receives context-aware answers with source citations.</p>
+        </div>
+
+        <!-- Chat Output Messages Container -->
+        <div id="chat-messages" class="flex-1 bg-slate-950/80 border border-slate-800 rounded-xl p-4 overflow-y-auto space-y-4 min-h-[360px] max-h-[500px]">
+          <div class="chat-bubble assistant flex items-start space-x-3">
+            <div class="w-8 h-8 rounded-lg bg-indigo-600/30 border border-indigo-500/40 flex items-center justify-center flex-shrink-0">
+              <i data-lucide="bot" class="w-4 h-4 text-indigo-400"></i>
+            </div>
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl rounded-tl-none p-3.5 text-xs text-slate-200 max-w-2xl space-y-2">
+              <p>Hello! I am your AI Learning Assistant. Ask me anything about your uploaded course materials or request explanations on complex concepts.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chat Input Bar -->
+        <div class="flex items-center space-x-2">
+          <input type="text" id="chat-input" placeholder="Ask a question (e.g., 'Explain binary search complexity with examples')..." class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-xs text-slate-100 focus:border-indigo-500 focus:outline-none">
+          <button id="btn-send-chat" class="bg-indigo-600 hover:bg-indigo-500 text-white px-5 py-3 rounded-xl font-medium text-xs transition flex items-center space-x-2">
+            <span>Send</span>
+            <i data-lucide="send" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- TAB 3: Learning Plan Studio -->
+      <section id="tab-plan" class="tab-content hidden space-y-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-2xl font-bold text-white flex items-center space-x-2">
+              <i data-lucide="calendar" class="text-indigo-400"></i>
+              <span>Smart Learning Plan Studio</span>
+            </h2>
+            <p class="text-sm text-slate-400">Generate personalized, day-by-day study schedules with milestone goals and time estimates.</p>
+          </div>
+          <div class="flex space-x-2">
+            <button id="btn-export-plan-md" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium border border-slate-700 flex items-center space-x-1.5">
+              <i data-lucide="file-text" class="w-3.5 h-3.5 text-indigo-400"></i>
+              <span>Export Markdown</span>
+            </button>
+            <button id="btn-export-plan-ics" class="px-3 py-1.5 rounded-lg bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 text-xs font-medium border border-indigo-500/30 flex items-center space-x-1.5">
+              <i data-lucide="download" class="w-3.5 h-3.5"></i>
+              <span>Calendar (.ics)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Plan Generator Form -->
+        <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4 space-y-4">
+          <h3 class="text-xs font-semibold uppercase tracking-wider text-indigo-400">Generate New Study Plan</h3>
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
+            <input type="text" id="plan-subject" placeholder="Subject (e.g. Data Structures)" class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-200 focus:border-indigo-500 focus:outline-none">
+            <input type="text" id="plan-goal" placeholder="Goal (e.g. Pass Midterm Exam)" class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-200 focus:border-indigo-500 focus:outline-none">
+            <input type="number" id="plan-days" value="7" min="1" max="30" placeholder="Total Days" class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-200 focus:border-indigo-500 focus:outline-none">
+            <input type="number" id="plan-hours" value="2.0" step="0.5" min="0.5" max="10" placeholder="Hours / Day" class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-200 focus:border-indigo-500 focus:outline-none">
+          </div>
+          <button id="btn-generate-plan" class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-medium text-xs py-2.5 rounded-lg transition flex items-center justify-center space-x-2">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            <span>Create AI Personalized Learning Plan</span>
+          </button>
+        </div>
+
+        <!-- Active Plan Timeline View -->
+        <div id="plan-display-container" class="space-y-4">
+          <div class="text-center py-8 text-slate-500 text-xs">
+            No active plan. Click generate above to create your custom schedule!
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: Quiz & Flashcard Studio -->
+      <section id="tab-quiz" class="tab-content hidden space-y-6">
+        <div>
+          <h2 class="text-2xl font-bold text-white flex items-center space-x-2">
+            <i data-lucide="sparkles" class="text-indigo-400"></i>
+            <span>Quiz & Flashcard Studio</span>
+          </h2>
+          <p class="text-sm text-slate-400">Practice with custom quizzes, instant grading, rationale explanations, and Spaced Repetition (SRS) flashcards.</p>
+        </div>
+
+        <!-- Sub Tab Buttons -->
+        <div class="flex space-x-2 border-b border-slate-800 pb-2">
+          <button id="subtab-quiz-btn" class="px-4 py-2 rounded-lg text-xs font-semibold bg-indigo-600 text-white">Interactive Quiz</button>
+          <button id="subtab-srs-btn" class="px-4 py-2 rounded-lg text-xs font-semibold bg-slate-800 text-slate-400 hover:text-slate-200">SRS Flashcard Flipper</button>
+        </div>
+
+        <!-- VIEW A: Interactive Quiz Generator & Runner -->
+        <div id="view-quiz-container" class="space-y-4">
+          <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4 space-y-3">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <input type="text" id="quiz-topic" placeholder="Topic (e.g. Memory & RAG Systems)" class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-200 focus:border-indigo-500 focus:outline-none">
+              <select id="quiz-num" class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-200 focus:border-indigo-500 focus:outline-none">
+                <option value="3">3 Questions</option>
+                <option value="5" selected>5 Questions</option>
+                <option value="10">10 Questions</option>
+              </select>
+              <select id="quiz-difficulty" class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-200 focus:border-indigo-500 focus:outline-none">
+                <option value="Easy">Easy</option>
+                <option value="Medium" selected>Medium</option>
+                <option value="Hard">Hard</option>
+              </select>
+            </div>
+            <button id="btn-generate-quiz" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-xs py-2 rounded-lg transition flex items-center justify-center space-x-2">
+              <i data-lucide="play-circle" class="w-4 h-4"></i>
+              <span>Generate & Start Practice Quiz</span>
+            </button>
+          </div>
+
+          <!-- Active Quiz Area -->
+          <div id="quiz-runner" class="hidden bg-slate-950/90 border border-slate-800 rounded-xl p-6 space-y-6">
+            <!-- Questions rendered via JS -->
+          </div>
+        </div>
+
+        <!-- VIEW B: Flashcards SRS Mode -->
+        <div id="view-srs-container" class="hidden space-y-4">
+          <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-6 text-center space-y-6">
+            <h3 class="text-sm font-semibold text-slate-300">Spaced Repetition (SuperMemo SM-2) Flashcards</h3>
+            
+            <!-- 3D Flip Flashcard -->
+            <div id="flashcard-box" class="perspective max-w-md mx-auto h-56 cursor-pointer">
+              <div id="flashcard-inner" class="flashcard-card relative w-full h-full rounded-2xl bg-gradient-to-br from-slate-900 to-indigo-950 border border-indigo-500/30 p-6 flex flex-col justify-between items-center text-center shadow-xl">
+                <div class="text-xs text-indigo-400 font-semibold uppercase tracking-wider" id="fc-topic">Topic</div>
+                <div class="text-sm font-medium text-slate-100 px-4 my-auto" id="fc-text">Click to reveal answer...</div>
+                <div class="text-xs text-slate-500 flex items-center space-x-1">
+                  <i data-lucide="rotate-cw" class="w-3 h-3"></i>
+                  <span>Click card to flip</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Rating Controls -->
+            <div class="flex justify-center space-x-3 pt-2">
+              <button data-rating="again" class="fc-rate-btn px-4 py-2 rounded-lg bg-rose-500/20 hover:bg-rose-500/30 text-rose-400 border border-rose-500/30 text-xs font-semibold">Again (1d)</button>
+              <button data-rating="hard" class="fc-rate-btn px-4 py-2 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-400 border border-amber-500/30 text-xs font-semibold">Hard (3d)</button>
+              <button data-rating="good" class="fc-rate-btn px-4 py-2 rounded-lg bg-indigo-500/20 hover:bg-indigo-500/30 text-indigo-300 border border-indigo-500/30 text-xs font-semibold">Good (6d)</button>
+              <button data-rating="easy" class="fc-rate-btn px-4 py-2 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 border border-emerald-500/30 text-xs font-semibold">Easy (12d)</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 5: Memory & Analytics Dashboard -->
+      <section id="tab-memory" class="tab-content hidden space-y-6">
+        <div>
+          <h2 class="text-2xl font-bold text-white flex items-center space-x-2">
+            <i data-lucide="brain" class="text-indigo-400"></i>
+            <span>Memory & Mastery Analytics</span>
+          </h2>
+          <p class="text-sm text-slate-400">Tracks long-term learning history, weak topics, and concept mastery matrix.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Flagged Weak Spots Box -->
+          <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4 space-y-3">
+            <h3 class="text-sm font-semibold text-slate-200 flex items-center space-x-2">
+              <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-400"></i>
+              <span>Weak Spots Needing Review</span>
+            </h3>
+            <div id="weak-spots-list" class="space-y-2 max-h-56 overflow-y-auto">
+              <p class="text-xs text-slate-500 italic">No weak spots logged!</p>
+            </div>
+          </div>
+
+          <!-- Concept Mastery Chart -->
+          <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4 space-y-3">
+            <h3 class="text-sm font-semibold text-slate-200 flex items-center space-x-2">
+              <i data-lucide="bar-chart-2" class="w-4 h-4 text-indigo-400"></i>
+              <span>Topic Mastery Matrix (%)</span>
+            </h3>
+            <div class="h-48 relative">
+              <canvas id="mastery-chart"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 6: Tools & Search Hub -->
+      <section id="tab-tools" class="tab-content hidden space-y-6">
+        <div>
+          <h2 class="text-2xl font-bold text-white flex items-center space-x-2">
+            <i data-lucide="wrench" class="text-indigo-400"></i>
+            <span>Tools & Knowledge Search</span>
+          </h2>
+          <p class="text-sm text-slate-400">Search external reference materials, run vector queries, and export reports.</p>
+        </div>
+
+        <div class="bg-slate-950/80 border border-slate-800 rounded-xl p-4 space-y-3">
+          <h3 class="text-xs font-semibold text-indigo-400 uppercase tracking-wider">Wikipedia Concept Lookup Tool</h3>
+          <div class="flex space-x-2">
+            <input type="text" id="wiki-query" placeholder="Enter term (e.g. Cosine Similarity, Neural Networks)..." class="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-200 focus:border-indigo-500 focus:outline-none">
+            <button id="btn-wiki-search" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg text-xs font-medium">Search Wiki</button>
+          </div>
+          <div id="wiki-result" class="hidden p-3 bg-slate-900 rounded-lg border border-slate-800 text-xs text-slate-300 space-y-2"></div>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- Gemini API Key Modal -->
+  <div id="modal-settings" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center hidden">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 max-w-md w-full mx-4 space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <h3 class="text-sm font-semibold text-white flex items-center space-x-2">
+          <i data-lucide="key" class="w-4 h-4 text-indigo-400"></i>
+          <span>Gemini API Settings</span>
+        </h3>
+        <button id="btn-close-settings" class="text-slate-400 hover:text-slate-200">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+      <p class="text-xs text-slate-400">Provide your Google Gemini API key to enable full real-time generative capabilities. If left blank, the app will run in offline smart fallback mode.</p>
+      <input type="password" id="input-api-key" placeholder="AIzaSy..." class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-100 focus:border-indigo-500 focus:outline-none">
+      <div class="flex space-x-2 justify-end pt-2">
+        <button id="btn-save-settings" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg text-xs font-medium">Save Settings</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/app.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

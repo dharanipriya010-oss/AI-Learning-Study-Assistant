@@ -1,0 +1,64 @@
+/* Custom Styles for AI Learning & Study Assistant */
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(51, 65, 85, 0.8);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.8);
+}
+
+/* 3D Flashcard Flip Animation */
+.perspective {
+  perspective: 1000px;
+}
+
+.flashcard-card {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flashcard-card.flipped {
+  transform: rotateY(180deg);
+}
+
+.tab-content {
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Citation Badge */
+.citation-tag {
+  cursor: pointer;
+  background-color: rgba(99, 102, 241, 0.15);
+  color: #818cf8;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  transition: all 0.2s;
+}
+
+.citation-tag:hover {
+  background-color: rgba(99, 102, 241, 0.3);
+  color: #ffffff;
+}

@@ -1,0 +1,160 @@
+{
+  "documents": [
+    {
+      "id": 1,
+      "filename": "CS_AI_Master_Study_Guide.md",
+      "file_type": "markdown",
+      "char_count": 2744,
+      "created_at": "1788961168.3429537"
+    },
+    {
+      "id": 2,
+      "filename": "OME345_AppliedDesignThinking_Lecture.txt",
+      "file_type": "text",
+      "char_count": 1276,
+      "created_at": "1788961589.998246"
+    },
+    {
+      "id": 3,
+      "filename": "Human values and ethics.txt",
+      "file_type": "text",
+      "char_count": 8,
+      "created_at": "1788962154.2828236"
+    },
+    {
+      "id": 4,
+      "filename": "CS101-Algorithm.txt",
+      "file_type": "text",
+      "char_count": 450,
+      "created_at": "1788962349.2776816"
+    },
+    {
+      "id": 5,
+      "filename": "DATABASE MANAGEMENT SYSTEM (DBMS).txt",
+      "file_type": "text",
+      "char_count": 1489,
+      "created_at": "1788963398.4952593"
+    }
+  ],
+  "chunks": [
+    {
+      "chunk_id": "CS_AI_Master_Study_Guide.md_c1",
+      "filename": "CS_AI_Master_Study_Guide.md",
+      "chunk_index": 1,
+      "text": "# Computer Science & Artificial Intelligence Master Study Guide\n\n## Chapter 1: Retrieval-Augmented Generation (RAG)\nRetrieval-Augmented Generation (RAG) is an architectural framework that enhances Large Language Model (LLM) responses by querying external authoritative knowledge bases before generating text.",
+      "page": 1
+    },
+    {
+      "chunk_id": "CS_AI_Master_Study_Guide.md_c2",
+      "filename": "CS_AI_Master_Study_Guide.md",
+      "chunk_index": 2,
+      "text": "age Model (LLM) responses by querying external authoritative knowledge bases before generating text.\n\n### Key Components of RAG:\n1. **Document Ingestion**: Parsing source materials (PDFs, Markdown, raw text) into structured chunks.\n2. **Text Chunking**: Dividing documents into overlapping sliding windows (e.g. 500 characters with 100 character overlap) to preserve contextual boundaries across split lines.\n3. **Vector Embedding & Indexing**: Converting text chunks into high-dimensional vector representations using embedding models or TF-IDF term frequency metrics.\n4. **Similarity Retrieval**: Using Cosine Similarity to find the Top-K most relevant text passages for a given user question.\n5. **Prompt Augmentation & Generation**: Synthesizing answer text while providing exact source citations to eliminate hallucinations.",
+      "page": 1
+    },
+    {
+      "chunk_id": "CS_AI_Master_Study_Guide.md_c3",
+      "filename": "CS_AI_Master_Study_Guide.md",
+      "chunk_index": 3,
+      "text": "tion**: Synthesizing answer text while providing exact source citations to eliminate hallucinations.\n\n---\n\n## Chapter 2: Memory Systems & Cognitive Science in AI\nAI Study Assistants rely on multi-tier memory models to personalize education:\n\n### 1. Epistemic / Conversation Memory\nStores short-term turn-by-turn chat history to sustain coherent context across multi-turn user dialogues.",
+      "page": 1
+    },
+    {
+      "chunk_id": "CS_AI_Master_Study_Guide.md_c4",
+      "filename": "CS_AI_Master_Study_Guide.md",
+      "chunk_index": 4,
+      "text": "s short-term turn-by-turn chat history to sustain coherent context across multi-turn user dialogues.\n\n### 2. Long-Term Topic Mastery Matrix\nTracks student performance on specific knowledge domains (0% to 100% mastery score). Whenever a student takes a quiz, correct answers boost mastery scores, while incorrect answers flag concepts as **Weak Spots Needing Review**.",
+      "page": 1
+    },
+    {
+      "chunk_id": "CS_AI_Master_Study_Guide.md_c5",
+      "filename": "CS_AI_Master_Study_Guide.md",
+      "chunk_index": 5,
+      "text": "nswers boost mastery scores, while incorrect answers flag concepts as **Weak Spots Needing Review**.\n\n### 3. Spaced Repetition Systems (SRS) & SuperMemo SM-2 Algorithm\nSpaced Repetition is an evidence-based learning technique where review intervals expand exponentially as performance improves.\nThe **SuperMemo SM-2** algorithm computes card interval $I(n)$ and Ease Factor $EF$ using the formula:\n$$EF' = EF + (0.1 - (5 - q) \\times (0.08 + (5 - q) \\times 0.02))$$\nwhere $q$ represents the user response quality rating:\n- **0 (Again)**: Complete blackout (reset interval to 1 day).\n- **3 (Hard)**: Correct response with serious difficulty.\n- **4 (Good)**: Correct response after hesitation.\n- **5 (Easy)**: Perfect recall with zero hesitation.",
+      "page": 1
+    },
+    {
+      "chunk_id": "CS_AI_Master_Study_Guide.md_c6",
+      "filename": "CS_AI_Master_Study_Guide.md",
+      "chunk_index": 6,
+      "text": "*4 (Good)**: Correct response after hesitation.\n- **5 (Easy)**: Perfect recall with zero hesitation.\n\n---",
+      "page": 1
+    },
+    {
+      "chunk_id": "CS_AI_Master_Study_Guide.md_c7",
+      "filename": "CS_AI_Master_Study_Guide.md",
+      "chunk_index": 7,
+      "text": "ood)**: Correct response after hesitation.\n- **5 (Easy)**: Perfect recall with zero hesitation.\n\n---\n\n## Chapter 3: Adaptive Study Planning & Assessment Studio\nA study plan decomposes long-term academic goals into daily manageable modules:\n- **Milestone Goals**: Daily targeted topics with estimated completion hours.\n- **Adaptive Scheduling**: Automatically shifts uncompleted tasks forward and adjusts daily workloads based on weak spots recorded in the Memory Matrix.\n- **Multi-Format Assessment**: Combines Multiple-Choice Questions (MCQs), True/False items, Short Answer prompts, and Flashcard decks.",
+      "page": 1
+    },
+    {
+      "chunk_id": "OME345_AppliedDesignThinking_Lecture.txt_c1",
+      "filename": "OME345_AppliedDesignThinking_Lecture.txt",
+      "chunk_index": 1,
+      "text": "# OME345 Applied Design Thinking - Lecture Notes\n\n## 1. Introduction to Design Thinking\nDesign Thinking is a human-centered, iterative problem-solving methodology used to understand users, challenge assumptions, redefine problems, and create innovative solutions.",
+      "page": 1
+    },
+    {
+      "chunk_id": "OME345_AppliedDesignThinking_Lecture.txt_c2",
+      "filename": "OME345_AppliedDesignThinking_Lecture.txt",
+      "chunk_index": 2,
+      "text": "used to understand users, challenge assumptions, redefine problems, and create innovative solutions.\n\n## 2. Five Stages of Design Thinking\n1. Empathize: Understand user needs, motivations, and pain points through interviews, observation, and immersion.\n2. Define: Formulate a clear problem statement (Point of View - POV) based on user insights gathered during empathy research.\n3. Ideate: Generate a wide range of creative ideas using techniques like brainstorming, mind mapping, and Worst Possible Idea.\n4. Prototype: Build low-fidelity, inexpensive physical or digital representations of concepts (paper wireframes, cardboard models).\n5. Test: Gather user feedback on prototypes to refine understanding of user needs and iterate on solutions.",
+      "page": 1
+    },
+    {
+      "chunk_id": "OME345_AppliedDesignThinking_Lecture.txt_c3",
+      "filename": "OME345_AppliedDesignThinking_Lecture.txt",
+      "chunk_index": 3,
+      "text": ": Gather user feedback on prototypes to refine understanding of user needs and iterate on solutions.\n\n## 3. Key Mindsets in Design Thinking\n- User-Centricity: Always keep the human end-user at the core of decision-making.\n- Bias Toward Action: Focus on building and testing over endless discussion.\n- Radical Collaboration: Leverage diverse team backgrounds for multifaceted perspectives.\n- Embracing Failure: View prototypes that fail as cheap learning opportunities.",
+      "page": 1
+    },
+    {
+      "chunk_id": "Human values and ethics.txt_c1",
+      "filename": "Human values and ethics.txt",
+      "chunk_index": 1,
+      "text": "generate",
+      "page": 1
+    },
+    {
+      "chunk_id": "CS101-Algorithm.txt_c1",
+      "filename": "CS101-Algorithm.txt",
+      "chunk_index": 1,
+      "text": "Algorithms are step-by-step procedures used to solve computational problems.\n\nAn algorithm should have the following characteristics:\n1. Input\n2. Output\n3. Definiteness\n4. Finiteness\n5. Effectiveness\n\nTime complexity measures how the running time of an algorithm increases\nas the input size increases.\n\nBig O notation describes the upper bound of an algorithm's growth rate.\n\nCommon time complexities include:\nO(1), O(log n), O(n), O(n log n), O(n\u00b2).",
+      "page": 1
+    },
+    {
+      "chunk_id": "DATABASE MANAGEMENT SYSTEM (DBMS).txt_c1",
+      "filename": "DATABASE MANAGEMENT SYSTEM (DBMS).txt",
+      "chunk_index": 1,
+      "text": "DATABASE MANAGEMENT SYSTEM (DBMS) - QUICK NOTES\n\n1. INTRODUCTION\n   - DBMS: Software for creating, managing, and manipulating databases.\n   - Examples: MySQL, Oracle, PostgreSQL, SQL Server.\n   - Advantages over File System: Reduced redundancy, better security, concurrency control.\n\n2. DBMS ARCHITECTURE\n   - 1-Tier: Direct access to DB.\n   - 2-Tier: Client \u2194 Server.\n   - 3-Tier: Client \u2194 Application Server \u2194 Database Server.",
+      "page": 1
+    },
+    {
+      "chunk_id": "DATABASE MANAGEMENT SYSTEM (DBMS).txt_c2",
+      "filename": "DATABASE MANAGEMENT SYSTEM (DBMS).txt",
+      "chunk_index": 2,
+      "text": "ess to DB.\n   - 2-Tier: Client \u2194 Server.\n   - 3-Tier: Client \u2194 Application Server \u2194 Database Server.\n\n3. DATA MODELS\n   - Hierarchical Model\n   - Network Model\n   - Relational Model (most common)\n   - Entity-Relationship Model\n\n4. KEYS\n   - Primary Key: Unique identifier for records.\n   - Foreign Key: Links two tables.\n   - Candidate Key: Possible primary keys.\n   - Composite Key: Combination of attributes.",
+      "page": 1
+    },
+    {
+      "chunk_id": "DATABASE MANAGEMENT SYSTEM (DBMS).txt_c3",
+      "filename": "DATABASE MANAGEMENT SYSTEM (DBMS).txt",
+      "chunk_index": 3,
+      "text": "wo tables.\n   - Candidate Key: Possible primary keys.\n   - Composite Key: Combination of attributes.\n\n5. NORMALIZATION\n   - 1NF: Remove repeating groups.\n   - 2NF: Remove partial dependency.\n   - 3NF: Remove transitive dependency.\n   - BCNF: Stronger form of 3NF.\n\n6. SQL BASICS\n   - DDL: CREATE, ALTER, DROP.\n   - DML: SELECT, INSERT, UPDATE, DELETE.\n   - DCL: GRANT, REVOKE.\n   - TCL: COMMIT, ROLLBACK, SAVEPOINT.",
+      "page": 1
+    },
+    {
+      "chunk_id": "DATABASE MANAGEMENT SYSTEM (DBMS).txt_c4",
+      "filename": "DATABASE MANAGEMENT SYSTEM (DBMS).txt",
+      "chunk_index": 4,
+      "text": "DML: SELECT, INSERT, UPDATE, DELETE.\n   - DCL: GRANT, REVOKE.\n   - TCL: COMMIT, ROLLBACK, SAVEPOINT.\n\n7. TRANSACTIONS\n   - ACID Properties:\n     A - Atomicity\n     C - Consistency\n     I - Isolation\n     D - Durability\n\n8. CONCURRENCY CONTROL\n   - Locking: Shared, Exclusive.\n   - Deadlock: Prevention, Detection, Recovery.\n\n9. INDEXING\n   - Improves query performance.\n   - Types: Primary, Secondary, Clustered, Non-clustered.",
+      "page": 1
+    },
+    {
+      "chunk_id": "DATABASE MANAGEMENT SYSTEM (DBMS).txt_c5",
+      "filename": "DATABASE MANAGEMENT SYSTEM (DBMS).txt",
+      "chunk_index": 5,
+      "text": " INDEXING\n   - Improves query performance.\n   - Types: Primary, Secondary, Clustered, Non-clustered.\n\n10. BACKUP & RECOVERY\n    - Full Backup\n    - Incremental Backup\n    - Point-in-time Recovery\n\nEND OF NOTES",
+      "page": 1
+    }
+  ]
+}
