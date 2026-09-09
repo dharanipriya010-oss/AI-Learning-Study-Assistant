@@ -1,4 +1,4 @@
-🎓 AI Learning & Study Assistant
+#🎓 AI Learning & Study Assistant
 
 An advanced, full-stack AI-powered study platform that creates personalized learning plans, answers questions from uploaded course materials with source citations, generates multi-format quizzes with automated grading, and tracks concept mastery using a long-term Memory system and Spaced Repetition System (SRS).
 
