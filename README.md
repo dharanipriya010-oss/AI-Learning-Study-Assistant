@@ -1,7 +1,10 @@
-NAME: DHARANI PRIYA A
+NAME: DHARANI PRIYA A                                                                                                                    
 REG NO: 920323104018
+
 NM ID: 38b89559345cb62b3cb4c14cc2824e19
+
 COLLEGE CODE: 9203
+
 COLLEGE NAME: Christian College of Engineering and Technology 
 
 🎓 AI Learning & Study Assistant
