@@ -1,3 +1,8 @@
+🎓 AI Learning & Study Assistant
+
+An advanced, full-stack AI-powered study platform that creates personalized learning plans, answers questions from uploaded course materials with source citations, generates multi-format quizzes with automated grading, and tracks concept mastery using a long-term Memory system and Spaced Repetition System (SRS).
+
+---
 NAME: DHARANI PRIYA A      
 
 
@@ -9,9 +14,6 @@ COLLEGE CODE: 9203
 
 COLLEGE NAME: Christian College of Engineering and Technology 
 
-🎓 AI Learning & Study Assistant
-
-An advanced, full-stack AI-powered study platform that creates personalized learning plans, answers questions from uploaded course materials with source citations, generates multi-format quizzes with automated grading, and tracks concept mastery using a long-term Memory system and Spaced Repetition System (SRS).
 
 ---
 
