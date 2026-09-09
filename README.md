@@ -1,4 +1,10 @@
-# 🎓 AI Learning & Study Assistant
+NAME: DHARANI PRIYA A
+REG NO: 920323104018
+NM ID: 38b89559345cb62b3cb4c14cc2824e19
+COLLEGE CODE: 9203
+COLLEGE NAME: Christian College of Engineering and Technology 
+
+🎓 AI Learning & Study Assistant
 
 An advanced, full-stack AI-powered study platform that creates personalized learning plans, answers questions from uploaded course materials with source citations, generates multi-format quizzes with automated grading, and tracks concept mastery using a long-term Memory system and Spaced Repetition System (SRS).
 
